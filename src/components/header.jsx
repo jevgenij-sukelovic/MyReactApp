@@ -1,12 +1,14 @@
 import React from 'react';
+import clases from './Header.module.css';
+
 
 
 const Header = () => {
     return (
 
-        <header className='header'>
+        <header className={clases.header}>
 
-            <img src='http://www.newdesignfile.com/postpic/2013/01/free-online-3d-logo-design_54374.png'></img>
+            <img className={clases.img} src='http://www.newdesignfile.com/postpic/2013/01/free-online-3d-logo-design_54374.png'></img>
 
         </header>
     )
