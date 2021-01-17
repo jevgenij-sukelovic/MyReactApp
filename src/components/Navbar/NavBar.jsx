@@ -6,16 +6,16 @@ const Nav = () => {
     return (
         <nav className={clases.nav}>
             <div className={clases.item}>
-                <a>Profile</a>
+                <a href="/profile"> Profile </a>
             </div>
             <div className={clases.item}>
-                <a>Messages</a>
+                <a href="dialogs"> Messages </a>
             </div>
             <div className={clases.item}>
-                <a>News</a>
+                <a href="/news">News</a>
             </div>
             <div className={clases.item}>
-                <a>Music</a>
+                <a href="/music">Music</a>
             </div>
 
 
