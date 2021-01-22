@@ -1,5 +1,6 @@
  .item {
-    color: rgb(252, 248, 7);
+    color: white;
+   padding: 10px;
   }
 
   .item img {

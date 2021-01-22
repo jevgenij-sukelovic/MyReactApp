@@ -11,10 +11,10 @@ const Post = (props) => {
 
             <img className={clases.item} src='https://www.pngfind.com/pngs/m/443-4438473_super-saiyan-goku-face-hd-png-download.png'/>
 
-           {props.message};
-            
+           {props.message}
+
             <div>
-                <span>like</span>
+               <span>like</span> {props.likesCount}
             </div>
             
         </div>
