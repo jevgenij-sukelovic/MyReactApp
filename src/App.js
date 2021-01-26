@@ -7,26 +7,34 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
+import Friends from "./components/Friends/Friends";
 
 
-const App = () => {
+
+const App = (props) => {
+
+
     return (
         <BrowserRouter>
-        <div className='app-wrapper'>
+            <div className='app-wrapper'>
 
-            <Header/>
-            <Nav/>
-            <div className='app-content'>
+                <Header/>
+                <Nav/>
+                <div className='app-content'>
 
-                <Route path='/profile' component={Profile}/>
-                <Route path='/dialogs' component={Dialogs}/>
-                <Route path='/news' component={News}/>
-                <Route path='/music' component={Music}/>
+                    <Route path='/profile' render={() => < Profile PostsData={props.state.messagesPage.PostsData}
+                                                                   addPost = {props.addPost}/>}/>
+                    <Route path='/dialogs' render={() => < Dialogs dialogsData={props.state.dialogsPage.dialogsData}
+                                                                   messagesData={props.state.dialogsPage.messagesData}/>}/>
+                    <Route path='/news' component={News}/>
+                    <Route path='/music' component={Music}/>
+                    <Route path ='/friends' render={() => < Friends myFriends={props.state.sideBar.myFriends}/>}/>
+
+
+                </div>
+
 
             </div>
-
-
-        </div>
         </BrowserRouter>
     );
 }

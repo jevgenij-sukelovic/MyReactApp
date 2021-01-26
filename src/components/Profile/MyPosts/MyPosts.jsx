@@ -3,12 +3,15 @@ import clases from './MyPosts.module.css';
 import Post from './Post/Post';
 
 
-const MyPosts = () => {
-    let PostsData = [
-        {id: 1, post: 'Hi, I am fine', likes: 12},
-        {id: 2, post: 'How are you?', likes: 2}
-    ]
-    let postsElement = PostsData.map(p => < Post message={p.post} likesCount={p.likes}/>)
+const MyPosts = (props) => {
+
+    let postsElement = props.PostsData.map(p => < Post message={p.post} likesCount={p.likes}/>)
+
+    let newPostElement = React.createRef();
+    let addPost = () => {
+        let text = newPostElement.current.value;
+        props.addPost(text)
+    }
 
     return (
 
@@ -18,9 +21,9 @@ const MyPosts = () => {
             </div>
 
             <div>
-                <textarea></textarea>
+                <textarea ref={newPostElement}></textarea>
                 <div>
-                    <button>Add post</button>
+                    <button onClick={addPost}>Add post</button>
                 </div>
 
             </div>

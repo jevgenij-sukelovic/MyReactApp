@@ -1,18 +1,26 @@
-.nav{
+.nav {
     grid-area: n;
     background-color: cornflowerblue;
     padding: 10%;
-  }
+}
 
-  .item a{
-      color: white;
-      text-decoration: none;
-     font-size: larger;
+.item a {
+    color: white;
+    text-decoration: none;
+    font-size: larger;;
 
-  ;
+}
 
-  }
+.item a.activLink {
+    color: gold;
+}
 
-  .item a.activLink {
-      color: gold;
-  }
+.friends a {
+    margin-top: 500px;
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
