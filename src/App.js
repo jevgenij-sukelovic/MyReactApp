@@ -8,7 +8,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Friends from "./components/Friends/Friends";
-
+import state from "./state/State";
 
 
 const App = (props) => {
@@ -23,12 +23,17 @@ const App = (props) => {
                 <div className='app-content'>
 
                     <Route path='/profile' render={() => < Profile PostsData={props.state.messagesPage.PostsData}
-                                                                   addPost = {props.addPost}/>}/>
+                                                                   addPost={props.addPost}
+                                                                   onPostChange={props.state.newPostMessage.onPostChange}
+                                                                   updatePost={props.updatePost}/>}/>
                     <Route path='/dialogs' render={() => < Dialogs dialogsData={props.state.dialogsPage.dialogsData}
-                                                                   messagesData={props.state.dialogsPage.messagesData}/>}/>
+                                                                   messagesData={props.state.dialogsPage.messagesData}
+                                                                   addNewMessage={props.addNewMessage}
+                                                                   newMessageText={props.newMessageText}
+                                                                   currentPost={state.dialogsPage.addMessage}/>}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
-                    <Route path ='/friends' render={() => < Friends myFriends={props.state.sideBar.myFriends}/>}/>
+                    <Route path='/friends' render={() => < Friends myFriends={props.state.sideBar.myFriends}/>}/>
 
 
                 </div>

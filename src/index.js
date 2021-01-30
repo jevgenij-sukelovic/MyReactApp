@@ -1,19 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import State from './state/State'
-import {addPost} from './state/State'
+import {rerenderEntireTree} from "./render";
+import state from "./state/State";
 
-
-
-ReactDOM.render(
-    <React.StrictMode>
-        <App state={State} addPost={addPost}/>
-    </React.StrictMode>,
-    document.getElementById('root')
-);
+rerenderEntireTree(state);
 
 
 // If you want to start measuring performance in your app, pass a function

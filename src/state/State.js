@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../render";
+
 let state = {
     dialogsPage: {
         messagesData: [
@@ -10,7 +12,8 @@ let state = {
             {id: 2, name: 'Morty'},
             {id: 3, name: 'Ralph'},
             {id: 4, name: 'Sarah'},
-        ]
+        ],
+        addMessage:'write your message here'
     },
     messagesPage: {
 
@@ -27,19 +30,42 @@ let state = {
                 {id: 3, name: 'Ralph'}
             ]
 
+    },
+    newPostMessage:{
+        onPostChange:
+        "Write your post here"
     }
 
 }
 
-export let addPost = (addMessage) => {
+export const addPost = () => {
 
     let newPost = {
         id: 3,
-        post: addMessage,
+        post: state.newPostMessage.onPostChange,
         likes: 0
     };
-    state.messagesPage.PostsData.push(addMessage)
+    state.messagesPage.PostsData.push(newPost);
+    state.newPostMessage.onPostChange='';
+    rerenderEntireTree(state);
+}
+export const updatePost = (newText) => {
+    state.newPostMessage.onPostChange = newText;
+    rerenderEntireTree(state);
+}
+export const addNewMessage = () =>{
+    let newMessage={
+        id:4, message:state.dialogsPage.addMessage
+    }
+    state.dialogsPage.messagesData.push(newMessage);
+    state.dialogsPage.addMessage='';
+    rerenderEntireTree(state)
+}
+export const newMessageText =(newText)=>{
+state.dialogsPage.addMessage=newText;
+    rerenderEntireTree(state)
 }
 
 
-export default state
+
+export default state;
