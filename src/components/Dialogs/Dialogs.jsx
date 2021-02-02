@@ -2,6 +2,8 @@ import React from 'react'
 import classes from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./Messages/MessageItem";
+import {addNewMessageActionCreator, NewMessageTextActionCreator} from "../../state/State";
+
 
 
 const Dialogs = (props) => {
@@ -14,12 +16,12 @@ const Dialogs = (props) => {
 
     let newMessageElement = React.createRef();
     let newMessage = () =>{
+        props.dispatch(addNewMessageActionCreator())
 
-        props.addNewMessage()
     }
     let addMessage = ()=>{
         let text = newMessageElement.current.value;
-        props.newMessageText(text)
+        props.dispatch(NewMessageTextActionCreator(text))
     }
 
     return (

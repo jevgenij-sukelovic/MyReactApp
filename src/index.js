@@ -1,10 +1,24 @@
 import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {rerenderEntireTree} from "./render";
-import state from "./state/State";
+import store from "./state/State";
+import ReactDOM from 'react-dom';
+import App from './App';
 
-rerenderEntireTree(state);
+
+export let rerenderEntireTree = (state) => {
+
+    ReactDOM.render(
+        <React.StrictMode>
+            <App state={state}
+                 dispatch = {store.dispatch.bind(store)}/>
+        </React.StrictMode>,
+        document.getElementById('root'))
+    ;}
+
+store.subscriber(rerenderEntireTree);
+
+rerenderEntireTree(store.getState());
 
 
 // If you want to start measuring performance in your app, pass a function

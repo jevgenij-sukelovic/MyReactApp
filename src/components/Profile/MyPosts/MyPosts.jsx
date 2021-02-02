@@ -1,6 +1,8 @@
 import React from 'react';
-import clases from './MyPosts.module.css';
+import classes from './MyPosts.module.css';
 import Post from './Post/Post';
+import {addPostActionCreator, updatePostActionCreator} from "../../../state/State";
+
 
 
 const MyPosts = (props) => {
@@ -10,17 +12,18 @@ const MyPosts = (props) => {
 
     let newPostElement = React.createRef();
     let addPost = () => {
-        props.addPost()
+        props.dispatch(addPostActionCreator())
     }
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.updatePost(text);
+        props.dispatch(updatePostActionCreator(text))
+
 
     }
 
     return (
 
-        <div className={clases.myPosts}>
+        <div className={classes.myPosts}>
             <div>
                 <h3>My posts</h3>
             </div>
@@ -32,7 +35,7 @@ const MyPosts = (props) => {
                 </div>
 
             </div>
-            <div className={clases.post}>
+            <div className={classes.post}>
 
                 {postsElement}
 

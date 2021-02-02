@@ -23,14 +23,12 @@ const App = (props) => {
                 <div className='app-content'>
 
                     <Route path='/profile' render={() => < Profile PostsData={props.state.messagesPage.PostsData}
-                                                                   addPost={props.addPost}
-                                                                   onPostChange={props.state.newPostMessage.onPostChange}
-                                                                   updatePost={props.updatePost}/>}/>
+                                                                   dispatch={props.dispatch}
+                                                                   onPostChange={props.state.newPostMessage.onPostChange}/>}/>
                     <Route path='/dialogs' render={() => < Dialogs dialogsData={props.state.dialogsPage.dialogsData}
                                                                    messagesData={props.state.dialogsPage.messagesData}
-                                                                   addNewMessage={props.addNewMessage}
-                                                                   newMessageText={props.newMessageText}
-                                                                   currentPost={state.dialogsPage.addMessage}/>}/>
+                                                                   dispatch={props.dispatch}
+                                                                   currentPost={props.state.dialogsPage.addMessage}/>}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/friends' render={() => < Friends myFriends={props.state.sideBar.myFriends}/>}/>
