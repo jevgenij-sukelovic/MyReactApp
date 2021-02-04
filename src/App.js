@@ -22,7 +22,7 @@ const App = (props) => {
                 <Nav/>
                 <div className='app-content'>
 
-                    <Route path='/profile' render={() => < Profile PostsData={props.state.messagesPage.PostsData}
+                    <Route path='/profile' render={() => < Profile PostsData={props.state.profilePage.PostsData}
                                                                    dispatch={props.dispatch}
                                                                    onPostChange={props.state.newPostMessage.onPostChange}/>}/>
                     <Route path='/dialogs' render={() => < Dialogs dialogsData={props.state.dialogsPage.dialogsData}
