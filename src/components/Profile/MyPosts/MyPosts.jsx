@@ -1,9 +1,6 @@
 import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
-import {addPostActionCreator, updatePostActionCreator} from "../../../state/profilePageReducer";
-
-
 
 
 const MyPosts = (props) => {
@@ -13,11 +10,11 @@ const MyPosts = (props) => {
 
     let newPostElement = React.createRef();
     let addPost = () => {
-        props.dispatch(addPostActionCreator())
+        props.addPost();
     }
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.dispatch(updatePostActionCreator(text))
+        props.onPostChange(text);
 
 
     }
@@ -30,7 +27,8 @@ const MyPosts = (props) => {
             </div>
 
             <div>
-                <textarea onChange={onPostChange} ref={newPostElement} placeholder={'Enter your post'} value={props.onPostChange}></textarea>
+                <textarea onChange={onPostChange} ref={newPostElement} placeholder={'Enter your post'}
+                          value={props.value}></textarea>
                 <div>
                     <button onClick={addPost}>Add post</button>
                 </div>

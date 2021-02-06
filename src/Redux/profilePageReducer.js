@@ -1,23 +1,33 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_POST = 'UPDATE-POST';
 
+let defaultState = {
 
-const profilePageReducer = (state, action) => {
+    PostsData: [
+        {id: 1, post: 'Hi, I am fine', likes: 12},
+        {id: 2, post: 'How are you?', likes: 2}
+    ],
+    onPostChange:
+        ""
+
+}
+
+const profilePageReducer = (state = defaultState, action) => {
 
 
     switch (action.type) {
         case ADD_POST:
             let newPost = {
                 id: 3,
-                post: state.newPostMessage.onPostChange,
+                post: state.onPostChange,
                 likes: 0
             };
-            state.profilePage.PostsData.push(newPost);
-            state.newPostMessage.onPostChange = '';
+            state.PostsData.push(newPost);
+            state.onPostChange = '';
             return state;
 
         case UPDATE_POST:
-            state.newPostMessage.onPostChange = action.newText;
+            state.onPostChange = action.newText;
             return state;
 
         default:

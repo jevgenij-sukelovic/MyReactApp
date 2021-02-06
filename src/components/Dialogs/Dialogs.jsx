@@ -2,7 +2,6 @@ import React from 'react'
 import classes from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./Messages/MessageItem";
-import {addNewMessageActionCreator, NewMessageTextActionCreator} from "../../state/dialogsPageReducer";
 
 
 
@@ -11,18 +10,18 @@ const Dialogs = (props) => {
 
 
 
-    let dialogsElements = props.dialogsData.map(d => <DialogItem name={d.name} id={d.id}/>)
+    let dialogsElements = props.state.dialogsData.map(d => <DialogItem name={d.name} id={d.id}/>)
 
-    let messageText = props.messagesData.map(m => <MessageItem message={m.message}/>)
+    let messageText = props.state.messagesData.map(m => <MessageItem message={m.message}/>)
 
-    /*let newMessageElement = React.createRef();*/
+
     let newMessage = () =>{
-        props.dispatch(addNewMessageActionCreator())
+        props.newMessage();
 
     }
     let addMessage = (event)=>{
         let text = event.target.value;
-        props.dispatch(NewMessageTextActionCreator(text))
+        props.addMessage(text)
     }
 
     return (
@@ -40,7 +39,8 @@ const Dialogs = (props) => {
                 {messageText}
 
                 <div>
-                    <textarea onChange={addMessage} placeholder={'Enter your message'} value={props.currentPost}></textarea>
+                    <textarea onChange={addMessage} placeholder={'Enter your message'}
+                              value={props.state.addMessage}></textarea>
                 </div>
 
                 <div>
