@@ -1,7 +1,7 @@
 import React from 'react';
 import clases from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
-import OnlineFriends from "../OnlineFriends/OnlineFriends";
+import OnlineFriends from "../Friends/OnlineFriends/OnlineFriends";
 import Friends from "../Friends/Friends";
 
 
