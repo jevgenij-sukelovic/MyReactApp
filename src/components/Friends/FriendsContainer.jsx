@@ -1,9 +1,9 @@
 import React from 'react';
 import Friends from "./Friends";
-import StoreContext from "../../StoreContext";
+import {connect} from "react-redux";
 
 
-const FriendsContainer = () => {
+/*const FriendsContainer = () => {
     return(
         <StoreContext.Consumer>{
             (store)=>{
@@ -18,6 +18,14 @@ const FriendsContainer = () => {
             }
         </StoreContext.Consumer>
     )
+}*/
+let mapStateToProps = (state)=>{
+    return{
+        myFriends: state.friendsPage.myFriends
+    }
 }
 
-export default FriendsContainer;
+
+const SuperFriendsContainer = connect (mapStateToProps)(Friends)
+
+export default SuperFriendsContainer;

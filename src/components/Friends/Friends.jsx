@@ -5,7 +5,7 @@ import OnlineFriends from "./OnlineFriends/OnlineFriends";
 
 const Friends = (props) =>{
 
-let friends = props.myFriends.map(el => <OnlineFriends name={el.name}/>)
+let friends = props.myFriends.map (el => <OnlineFriends name={el.name}/>)
 
     return(
         <div>

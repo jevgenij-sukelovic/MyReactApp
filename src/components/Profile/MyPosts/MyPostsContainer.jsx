@@ -1,10 +1,10 @@
 import React from 'react';
 import {addPostActionCreator, updatePostActionCreator} from "../../../Redux/profilePageReducer";
 import MyPosts from "./MyPosts";
-import StoreContext from "../../../StoreContext";
+import {connect} from "react-redux";
 
 
-const MyPostsContainer = (props) => {
+/*const MyPostsContainer = (props) => {
 
 
     return (
@@ -28,6 +28,22 @@ const MyPostsContainer = (props) => {
 
         </StoreContext.Consumer>
     )
+}*/
+let mapStateToProps = (state)=>{
+    return{
+        PostsData: state.profilePage.PostsData,
+        value: state.profilePage.onPostChange
+    }
 }
 
-export default MyPostsContainer;
+let mapDispatchToProps = (dispatch)=>{
+    return{
+        addPost: ()=>{ dispatch(addPostActionCreator())},
+        onPostChange: (text) => {dispatch(updatePostActionCreator(text))}
+    }
+}
+
+const SuperMyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+
+
+export default SuperMyPostsContainer;
